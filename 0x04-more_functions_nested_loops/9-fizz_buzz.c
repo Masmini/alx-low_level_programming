@@ -1,63 +1,73 @@
 #include "main.h"
+
 /**
- * fizz_buzz - prints the numbers from 1 to 100 followed by a new line
- * for multiples of 3 print Fizz instead of the number
- * for multiples of 5 print Buzz instead of the number
- * for multiples of both 3 and 5 print FizzBuzz instead of the number
+ * fizz_buzz - prints the numbers from 1 to 100, followed by a new line.
+ *             But for multiples of three print Fizz instead of the number and
+ *             for the multiples of five print Buzz. For numbers which are
+ *             multiples of both three and five print FizzBuzz.
+ *
+ * Return: void
  */
 void fizz_buzz(void)
 {
-int i;
-for (i = 1; i <= 100; i++)
-{
-if (i % 3 == 0 && i % 5 == 0)
-{
-_putchar('F');
-_putchar('i');
-_putchar('z');
-_putchar('z');
-_putchar('B');
-_putchar('u');
-_putchar('z');
-_putchar('z');
+    int i;
+
+    for (i = 1; i <= 100; i++)
+    {
+        if (i % 3 == 0 && i % 5 == 0)
+        {
+            _putchar('F');
+            _putchar('i');
+            _putchar('z');
+            _putchar('z');
+            _putchar('B');
+            _putchar('u');
+            _putchar('z');
+            _putchar('z');
+        }
+        else if (i % 3 == 0)
+        {
+            _putchar('F');
+            _putchar('i');
+            _putchar('z');
+            _putchar('z');
+        }
+        else if (i % 5 == 0)
+        {
+            _putchar('B');
+            _putchar('u');
+            _putchar('z');
+            _putchar('z');
+        }
+        else
+        {
+            print_number(i);
+        }
+
+        if (i != 100)
+            _putchar(' ');
+    }
+
+    _putchar('\n');
 }
-else if (i % 3 == 0)
+
+/**
+ * print_number - prints an integer to standard output
+ * @n: the integer to print
+ *
+ * Return: void
+ */
+void print_number(int n)
 {
-_putchar('F');
-_putchar('i');
-_putchar('z');
-_putchar('z');
-}
-else if (i % 5 == 0)
-{
-_putchar('B');
-_putchar('u');
-_putchar('z');
-_putchar('z');
-}
-else
-{
-int digits = 0, t = i;
-while (t != 0)
-{
-digits++;
-t /= 10;
-}
-t = i;
-while (t != 0)
-{
-_putchar((t % 10) + '0');
-t /= 10;
-}
- while (digits < 2)
-{
-_putchar(' ');
-digits++;
-}
-}
-if (i < 100)
-_putchar(' ');
-}
-_putchar('\n');
+    if (n < 0)
+    {
+        _putchar('-');
+        n = -n;
+    }
+
+    if (n / 10)
+        print_number(n / 10);
+
+    _putchar(n % 10 + '0');
 }
 
